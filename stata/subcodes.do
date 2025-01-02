@@ -20,7 +20,9 @@
       For example, in a study about heat illness, you might want to identify records with ICD codes related to heatstroke.
 
     Example Usage:
-    create_var_based_on_codes, codes("1673") var_range("DX1-DX10") newvar("icd_match") label("ICD code match")
+    create_var_based_on_codes, codes("1673") var_range("CPT1-CPT10") newvar("cpt_match") label("CPT code match")
+
+    create_var_based_on_subcodes, codes("51881 51882 51884 7991") var_range("DX1-DX10") newvar("pc_respiratory_dx") label("potential complications - respiratory dx")
 */
 
 * Function to create a variable and label based on codes and range of variables

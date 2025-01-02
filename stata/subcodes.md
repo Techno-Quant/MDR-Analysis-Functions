@@ -34,5 +34,6 @@ In some datasets, ICD codes may include periods (e.g., "M17.0"). To ensure accur
 Here is an example of how the functions can be used to match ICD codes:
 
 ```stata
-create_var_based_on_subcodes, codes("M17") var_range("DX1-DX10") newvar("osteoarthritis_knee") label("Osteoarthritis of knee")
-create_var_based_on_subcodes_with_period, codes("M17") var_range("DX1-DX10") newvar("osteoarthritis_knee_cleaned") label("Osteoarthritis of knee (cleaned)")
+create_var_based_on_codes, codes("1673") var_range("CPT1-CPT10") newvar("cpt_match") label("CPT code match")
+
+create_var_based_on_subcodes, codes("51881 51882 51884 7991") var_range("DX1-DX10") newvar("pc_respiratory_dx") label("potential complications - respiratory dx")
