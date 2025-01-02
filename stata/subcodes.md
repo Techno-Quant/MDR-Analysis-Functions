@@ -31,7 +31,7 @@ In some datasets, ICD codes may include periods (e.g., "M17.0"). To ensure accur
 
 ## Example Usage
 
-Here is an example of how the functions can be used to match ICD codes:
+Here is an example of how the functions can be used to match both CPT and ICD codes with or without periods:
 
 ```stata
 create_var_based_on_codes, codes("1673") var_range("CPT1-CPT10") newvar("cpt_match") label("CPT code match")
