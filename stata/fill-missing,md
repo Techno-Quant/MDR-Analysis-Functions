@@ -1,0 +1,59 @@
+# MDR Missing Values Handling Functions
+
+## Introduction
+
+The Military Health System Data Repository (MDR) is known for having missing values in various datasets. Handling missing data is a critical step in data preprocessing, especially in medical research. This set of functions provides methods to handle missing values by using the "last known" value approach, which is appropriate for conserving the temporal relationship between events. Additionally, these functions pay attention to preserving the sort order of the dataset.
+
+## Functions
+
+### 1. `sort_if_needed`
+
+This function checks if the dataset is already sorted by the specified ID and date variables, and sorts if necessary. This helps in preserving the user's sort order if they have already sorted the data.
+
+**Variables:**
+- `id_var`: The name of the ID variable (e.g., "id").
+- `date_var`: The name of the date variable (e.g., "date").
+
+**Example Usage:**
+```stata
+sort_if_needed, id_var("id") date_var("date")
+```
+
+### 2. `forward_fill`
+
+This function forward fills missing values in a specified range of variables based on the last known value for each ID. This method is useful when you want to fill missing values with the most recent known value without considering future values.
+
+**Variables:**
+- `var_range`: A range of variables to forward fill (e.g., "weight height").
+- `id_var`: The name of the ID variable (e.g., "id").
+
+**Example Usage:**
+```stata
+forward_fill, var_range("weight height") id_var("id")
+```
+
+### 3. `back_and_forward_fill_with_date`
+
+This function back and forward fills missing values in a specified range of variables based on the last known value for each ID and date. It first back fills the missing values, then reverses the order and forward fills the missing values. This method ensures that missing values are filled using both past and future known values.
+
+**Variables:**
+- `var_range`: A range of variables to back and forward fill (e.g., "weight height").
+- `id_var`: The name of the ID variable (e.g., "id").
+- `date_var`: The name of the date variable (e.g., "date").
+
+**Example Usage:**
+```stata
+back_and_forward_fill_with_date, var_range("weight height") id_var("id") date_var("date")
+```
+
+## Handling Missing Values
+
+The idea of using the "last known" value is appropriate when conserving the temporal relationship between events. For example, in medical research, it is crucial to maintain the sequence of events to understand the progression of a condition or the impact of treatments. However, sometimes it is appropriate to forward fill for some types of data, such as Unit Identification Codes (UICs), where the most recent known value is sufficient for analysis.
+
+## Attention to Preserving Sorts
+
+These functions are designed to preserve the sort order of the dataset. The `sort_if_needed` function ensures that the dataset is only sorted if necessary, allowing users to maintain their preferred sort order. This is particularly important when dealing with large datasets where maintaining the original sort order can be crucial for subsequent analyses.
+
+## Conclusion
+
+By using these functions, researchers can efficiently handle missing values in the MDR dataset, ensuring accurate and reliable analyses. The methods provided here are flexible and can be adapted to various types of data, making them valuable tools for data preprocessing in medical research.
