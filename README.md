@@ -16,6 +16,8 @@ The Military Health System Data Repository (MDR) is a centralized data repositor
 
 For thorough medical research, it is preferable to use the Defense Manpower Data Center (DMDC) data along with MDR. The DMDC provides useful input variables when controlling for factors, enhancing the robustness of the analysis.
 
+**Disclaimer:** This is not official work for the DoD or the DHA. Although this code was created by team members working as contractors for the DoD, the code was developed independently and is intended for educational purposes only.
+
 This repository includes both STATA and Python functions. STATA is typically a DoD-approved software, and the STATA folder contains README files that explain the reasoning for these functions and common MDR and DMDC practices.
 
 ## Installation
